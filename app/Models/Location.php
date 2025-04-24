@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Location extends Model
@@ -20,7 +21,13 @@ class Location extends Model
         'description',
     ];
 
-    public function events()
+    /**
+     * Relationship to the events associated with the location.
+     *
+     * @return HasMany
+     *
+     */
+    public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }

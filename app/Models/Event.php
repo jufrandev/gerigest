@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
 {
@@ -24,22 +25,43 @@ class Event extends Model
     ];
 
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
     protected $casts = [
         'start_time' => 'datetime',
         'end_time' => 'datetime',
     ];
 
-    public function user()
+    /**
+     * Relationship to the user who created the event.
+     *
+     * @return BelongsTo
+     */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function activity()
+    /**
+     * Relationship to the activity associated with the event.
+     *
+     * @return BelongsTo
+     */
+    public function activity(): BelongsTo
     {
         return $this->belongsTo(Activity::class);
     }
 
-    public function location()
+    /**
+     * Relationship to the location associated with the event.
+     *
+     * @return BelongsTo
+     *
+     */
+    public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
     }

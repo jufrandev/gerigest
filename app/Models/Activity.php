@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Activity extends Model
@@ -32,16 +34,31 @@ class Activity extends Model
         return $this->belongsTo(ActivityType::class, 'activity_type_id');
     }
 
-    public function createdBy()
+    /**
+     * Relationship to the user who created the activity.
+     *
+     * @return BelongsTo
+     */
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    public function events()
+    /**
+     * Relationship to the events associated with the activity.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events(): HasMany
     {
         return $this->hasMany(Event::class);
     }
 
+    /**
+     * Casts for the model attributes.
+     *
+     * @var array
+     */
     protected $casts = [
         'deleted_at' => 'datetime',
     ];
