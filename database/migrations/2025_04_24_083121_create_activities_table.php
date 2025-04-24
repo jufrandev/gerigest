@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255)->unique()->index();
             $table->text('description')->nullable();
-            //referencia tipo de actividad como foreign key para la columna activity_type_id
             $table->foreignId('activity_type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            $table->string('created_by', 255)->nullable()->index();
             $table->softDeletes();
         });
     }
