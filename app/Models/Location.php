@@ -22,14 +22,14 @@ class Location extends Model
     ];
 
     /**
-     * Relationship to the events associated with the location.
+     * Relationship to the activities associated with the location.
      *
      * @return HasMany
      *
      */
-    public function events(): HasMany
+    public function activities(): HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Activity::class);
     }
 
 }

@@ -21,6 +21,7 @@ class Activity extends Model
     protected $fillable = [
         'name',
         'description',
+        'location_id',
         'activity_type_id',
         'created_by',
     ];
@@ -52,6 +53,17 @@ class Activity extends Model
     public function events(): HasMany
     {
         return $this->hasMany(Event::class);
+    }
+
+    /**
+     * Relationship to the location associated with the activity.
+     *
+     * @return BelongsTo
+     *
+     */
+    public function location(): BelongsTo
+    {
+        return $this->belongsTo(Location::class);
     }
 
     /**

@@ -19,7 +19,6 @@ class Event extends Model
         'user_id',
         'created_by',
         'activity_id',
-        'location_id',
         'start_time',
         'end_time',
     ];
@@ -53,16 +52,5 @@ class Event extends Model
     public function activity(): BelongsTo
     {
         return $this->belongsTo(Activity::class);
-    }
-
-    /**
-     * Relationship to the location associated with the event.
-     *
-     * @return BelongsTo
-     *
-     */
-    public function location(): BelongsTo
-    {
-        return $this->belongsTo(Location::class);
     }
 }

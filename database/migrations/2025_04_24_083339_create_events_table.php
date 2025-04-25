@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('activity_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('location_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('start_time');
             $table->timestamp('end_time')->nullable();
             $table->timestamps();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('priorities', function (Blueprint $table) {
             $table->id();
-            $table->string('priority')->unique();
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
