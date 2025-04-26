@@ -3,10 +3,10 @@
 
         <!-- Redes Sociales -->
         <div class="d-flex justify-content-center mb-1">
-            <a href="#" class="social-icon mx-2"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon mx-2"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://facebook.com" target="_blank" class="social-icon mx-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com" target="_blank" class="social-icon mx-2"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" class="social-icon mx-2"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" class="social-icon mx-2"><i class="fab fa-linkedin-in"></i></a>
         </div>
 
         <!-- Separador -->
@@ -20,19 +20,19 @@
 
                 <!-- Primer grupo -->
                 <ul class="list-unstyled me-lg-4 mb-0">
-                    <li><a href="#" class="footer-link"><i class="fas fa-info-circle me-2"></i>¿Quiénes somos?</a>
+                    <li><a href="/quienes-somos" class="footer-link"><i class="fas fa-info-circle me-2"></i>¿Quiénes somos?</a>
                     </li>
-                    <li><a href="#" class="footer-link"><i class="fas fa-map-marker-alt me-2"></i>¿Dónde
+                    <li><a href="/donde-estamos" class="footer-link"><i class="fas fa-map-marker-alt me-2"></i>¿Dónde
                             estamos?</a></li>
-                    <li><a href="#" class="footer-link"><i class="fas fa-bullseye me-2"></i>Misión, visión y
+                    <li><a href="/mission" class="footer-link"><i class="fas fa-bullseye me-2"></i>Misión, visión y
                             valores</a></li>
                 </ul>
 
                 <!-- Segundo grupo -->
                 <ul class="list-unstyled mb-0">
-                    <li><a href="#" class="footer-link"><i class="fas fa-user-shield me-2"></i>Política de
+                    <li><a href="/privacy" class="footer-link"><i class="fas fa-user-shield me-2"></i>Política de
                             privacidad</a></li>
-                    <li><a href="#" class="footer-link"><i class="fas fa-envelope me-2"></i>Contáctanos</a></li>
+                    <li><a href="/contact" class="footer-link"><i class="fas fa-envelope me-2"></i>Contáctanos</a></li>
                 </ul>
 
             </div>
