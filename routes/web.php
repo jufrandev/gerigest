@@ -19,7 +19,7 @@ Route::get('/login-fail', function () {
     return view('login-fail');
 });
 
-Route::get('/actividades', function () {
+Route::get('/activities', function () {
     return view('activities');
 });
 // La ruta por encima de este comentario muestra los formularios relacionados con las actividades
@@ -28,7 +28,7 @@ Route::post('/actividades', function () {
     return view('activities');
 });
 
-Route::get('/comunicaciones', function () {
+Route::get('/comunications', function () {
     return view('comunications');
 });
 // La ruta por encima de este comentario muestra los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
