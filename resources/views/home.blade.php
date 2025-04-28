@@ -10,7 +10,7 @@
             <p>GeriGest conecta centros, familias y profesionales para ofrecer el mejor cuidado a quienes más lo merecen.</p>
             <img src="/assets/img/hero_image.jpg" alt="Ilustración GeriGest" class="hero-image">
             <div>
-                <a href="#" class="btn-primary">Solicitar una demo</a>
+                <a href="/contact" class="btn-primary">Solicitar una demo</a>
             </div>
         </div>
     </section>

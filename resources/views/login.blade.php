@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="container_logo col-4">
+        <div class="container_logo col-12 col-md-4 col-lg-4">
             <div class="logo">
                 <img src="/assets/img/logo_300x300.png" alt="GeriGest Logo">
             </div>
