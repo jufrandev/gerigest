@@ -56,6 +56,9 @@ class UserSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
         $familiar->assignRole('familiar');
+
+        // Crear 10 usuarios con roles aleatorios
+        User::factory()->count(100)->create();
     }
 }
 

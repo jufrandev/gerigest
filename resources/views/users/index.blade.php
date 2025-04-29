@@ -30,7 +30,7 @@
                     </td>
                     <td class="text-center">
                         <a href="{{ route('users.show', $user) }}" class="btn btn-info btn-sm">Ver</a>
-                        <a href="{{ route('users.edit', $user) }}" class="btn btn-warning btn-sm">Editar</a>
+                        {{-- <a href="{{ route('users.edit', $user) }}" class="btn btn-warning btn-sm">Editar</a> --}}
                         <button type="submit" form="delete-user-{{ $user->id }}" class="btn btn-danger btn-sm">Borrar</button>
                         <form id="delete-user-{{ $user->id }}" action="{{ route('users.destroySingle', $user) }}" method="post" style="display: none;">
                             @csrf
@@ -43,5 +43,8 @@
         </table>
         <button type="submit" class="btn btn-danger">Borrar Seleccionados</button>
     </form>
+    <div class=" m-3 justify-content-center">
+        {{ $users->links() }}
+    </div>
 </div>
 @endsection
