@@ -21,7 +21,12 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'username',
+        'address',
+        'phone',
+        'postal_code',
         'email',
         'password',
     ];
@@ -49,5 +54,44 @@ class User extends Authenticatable
         ];
     }
 
-    // Funcion
+    protected function getFullNameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            // Generar el username base
+            $baseUsername = strtolower(substr($user->first_name, 0, 1) . $user->last_name);
+            $username = $baseUsername;
+
+            // Verificar si el username ya existe y agregar un número si es necesario
+            $counter = 1;
+            while (User::where('username', $username)->exists()) {
+                $username = $baseUsername . $counter;
+                $counter++;
+            }
+
+            $user->username = $username;
+        });
+    }
+
+
+    public function healthcareWorker()
+    {
+        return $this->hasOne(HealthcareWorker::class);
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class);
+    }
+
+    public function familyMembers()
+    {
+        return $this->hasMany(FamilyMember::class, 'user_id');
+    }
 }

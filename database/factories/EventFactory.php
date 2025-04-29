@@ -27,9 +27,9 @@ class EventFactory extends Factory
         $endTime = (clone $startTime)->modify(rand(1, 3) . ' hours');
         $data = [];
         $data = [
-            // User aleatorio de la tabla users con rol de 'usuario' en tabla roles
+            // User aleatorio de la tabla users con rol de 'paciente' en tabla roles
             'user_id' => User::whereHas('roles', function ($query) {
-                $query->where('name', 'usuario');
+                $query->where('name', 'paciente');
             })->inRandomOrder()->first()->id,
 
             // User aleatorio de la tabla users con rol de 'sociosanitario' o 'admin'

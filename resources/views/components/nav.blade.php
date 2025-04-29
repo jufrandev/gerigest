@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand d-flex align-items-center" href="/">
-            <img src="assets/img/logo_450x125.png" alt="GeriGest Logo" height="50" class="nav-img">
+            <img src="/assets/img/logo_450x125.png" alt="GeriGest Logo" height="50" class="nav-img">
         </a>
 
         <!-- Botón hamburguesa -->

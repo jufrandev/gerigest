@@ -74,3 +74,5 @@ Route::get('/calendar', function () {
 Route::resource('/users', UserController::class)->only([
     'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
 ]);
+
+Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])->name('users.destroySingle');
