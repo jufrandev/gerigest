@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -69,3 +70,7 @@ Route::get('/contact', function () {
 Route::get('/calendar', function () {
     return view('calendar');
 });
+
+Route::resource('/users', UserController::class)->only([
+    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+]);
