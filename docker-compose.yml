@@ -63,6 +63,13 @@ services:
             - mysql
         networks:
             - sail
+    mailpit:
+        image: axllent/mailpit
+        ports:
+            - "8025:8025"  # Interfaz web
+            - "1025:1025"  # Puerto SMTP
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
