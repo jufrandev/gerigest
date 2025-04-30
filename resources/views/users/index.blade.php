@@ -43,7 +43,7 @@
         </table>
         <button type="submit" class="btn btn-danger">Borrar Seleccionados</button>
     </form>
-    <div class=" m-3 justify-content-center">
+    <div class="m-3 justify-content-center">
         {{ $users->links() }}
     </div>
 </div>

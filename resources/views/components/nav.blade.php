@@ -25,7 +25,7 @@
                     <a class="nav-link" href="/calendar">Calendario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/comunications">Comunicaciones</a>
+                    <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/users">Usuarios</a>

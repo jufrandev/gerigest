@@ -1,93 +1,57 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Rutas públicas
+    // Rutas públicas
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home')->name('home.landing');
+Route::view('/login', 'login')->name('login.form');
+Route::view('/login-fail', 'login-fail')->name('login.fail');
+Route::view('/quienes-somos', 'quienes-somos')->name('about');
+Route::view('/donde-estamos', 'donde-estamos')->name('location');
+Route::view('/mission', 'mission')->name('mission');
+Route::view('/privacy', 'privacy')->name('privacy');
+Route::view('/contact', 'contact')->name('contact');
 
-Route::get('/login', function () {
-    return view('login');
-});
-// La ruta por encima de este comentario muestra el formulario de inicio de sesión
-// La ruta por debajo de este comentario recibe la información del formulario de inicio de sesión
-Route::post('/login', function () {
-    return view('login');
-});
 
-Route::get('/login-fail', function () {
-    return view('login-fail');
-});
-
-Route::get('/quienes-somos', function () {
-    return view('quienes-somos');
-});
-
-Route::get('/donde-estamos', function () {
-    return view('donde-estamos');
-});
-
-Route::get('/mission', function () {
-    return view('mission');
-});
-
-Route::get('/privacy', function () {
-    return view('privacy');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-// Rutas con el middleware 'auth'
+    // Rutas con el middleware 'auth'
 
 Route::group(['middleware' => ['auth']], function (){
 
-    Route::get('/activities', function () {
-        return view('activities');
-    });
-    // La ruta por encima de este comentario muestra los formularios relacionados con las actividades
-    // La ruta por debajo de este comentario recibe la información de los formularios relacionados con las actividades
-    Route::post('/actividades', function () {
-        return view('activities');
-    });
+    // Route::view('/activities', 'activities')->name('activities.index');
+    // // TODO: Ruta para procesar formulario de actividades
+    // // Route::post('/actividades', [ActividadController::class, 'store']);
 
-    Route::get('/comunications', function () {
-        return view('comunications');
-    });
-    // La ruta por encima de este comentario muestra los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
-    // La ruta por debajo de este comentario recibe la información de los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
-    Route::post('/comunicaciones', function () {
-        return view('comunications');
-    });
+    // Route::view('/comunications', 'comunications')->name('comunications.index');
+    // // TODO: Ruta para procesar formulario de comunicaciones
+    // // Route::post('/comunicaciones', [ComunicacionController::class, 'store']);
 
-    Route::get('/profile', function () {
-        return view('profile');
-    });
-    // La ruta por encima de este comentario muestra el perfil del usuario
-    // La ruta por debajo de este comentario recibe la información del formulario de edición del perfil
-    Route::post('/profile', function () {
-        return view('profile');
-    });
+    Route::view('/profile', 'profile')->name('profile.view');
+    // TODO: Ruta para actualizar perfil
+    // Route::post('/profile', [ProfileController::class, 'update']);
 
-    Route::get('/calendar', function () {
-        return view('calendar');
-    });
+    Route::view('/calendar', 'calendar')->name('calendar');
 
-    Route::resource('/users', UserController::class)->only([
+    Route::resource('users', UserController::class)->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);
 
-    Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])->name('users.destroySingle');
+    Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])
+        ->name('users.destroySingle');
 
-
+    Route::resource('notes', NoteController::class)->only([
+        'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    ]);
 });
+
+    // Rutas de autenticación
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+

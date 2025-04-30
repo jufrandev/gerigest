@@ -9,16 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('title');
-            $table->text('content');
-            $table->foreignId('note_type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('priority_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('created_by'); // Usuario que crea la nota
+            $table->string('title'); // Título de la nota
+            $table->text('content')->nullable(); // Contenido de la nota
+            $table->unsignedBigInteger('note_type_id')->nullable(); // Tipo de nota
+            $table->unsignedBigInteger('priority_id')->nullable(); // Prioridad
             $table->timestamps();
+
+            // Relaciones
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('note_type_id')->references('id')->on('note_types')->onUpdate('cascade')->onDelete('set null');
+            $table->foreign('priority_id')->references('id')->on('priorities')->onUpdate('cascade')->onDelete('set null');
         });
     }
 
