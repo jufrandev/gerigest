@@ -12,6 +12,7 @@
   <body>
     <x-nav />
     @yield('content')
+    <br>
     <script>
 
         document.addEventListener('DOMContentLoaded', function() {
