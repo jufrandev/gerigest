@@ -39,7 +39,12 @@
                     <a href="/profile" class="nav-icon">
                         <i class="fas fa-user fa-lg"></i>
                     </a>
-                    <a href="/login" class="nav-icon">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a href="#" class="nav-icon"
+                    onclick="event.preventDefault(); if(confirm('¿Seguro que deseas cerrar sesión?')) document.getElementById('logout-form').submit();"
+                    title="Cerrar sesión">
                         <i class="fas fa-sign-out-alt fa-lg"></i>
                     </a>
                 </div>

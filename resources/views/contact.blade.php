@@ -22,7 +22,6 @@
                 </div>
                 <div class="form-group col-3 mx-auto justify-between">
                     <button type="submit" class="btn btn-secundario ">Enviar</button>
-                    <a href="#">Recordar  contraseña</a>
                 </div>
         </div>
     </div>

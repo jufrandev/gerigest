@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+// Rutas públicas
 
 Route::get('/', function () {
     return view('home');
@@ -18,33 +22,6 @@ Route::post('/login', function () {
 
 Route::get('/login-fail', function () {
     return view('login-fail');
-});
-
-Route::get('/activities', function () {
-    return view('activities');
-});
-// La ruta por encima de este comentario muestra los formularios relacionados con las actividades
-// La ruta por debajo de este comentario recibe la información de los formularios relacionados con las actividades
-Route::post('/actividades', function () {
-    return view('activities');
-});
-
-Route::get('/comunications', function () {
-    return view('comunications');
-});
-// La ruta por encima de este comentario muestra los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
-// La ruta por debajo de este comentario recibe la información de los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
-Route::post('/comunicaciones', function () {
-    return view('comunications');
-});
-
-Route::get('/profile', function () {
-    return view('profile');
-});
-// La ruta por encima de este comentario muestra el perfil del usuario
-// La ruta por debajo de este comentario recibe la información del formulario de edición del perfil
-Route::post('/profile', function () {
-    return view('profile');
 });
 
 Route::get('/quienes-somos', function () {
@@ -67,12 +44,50 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/calendar', function () {
-    return view('calendar');
+// Rutas con el middleware 'auth'
+
+Route::group(['middleware' => ['auth']], function (){
+
+    Route::get('/activities', function () {
+        return view('activities');
+    });
+    // La ruta por encima de este comentario muestra los formularios relacionados con las actividades
+    // La ruta por debajo de este comentario recibe la información de los formularios relacionados con las actividades
+    Route::post('/actividades', function () {
+        return view('activities');
+    });
+
+    Route::get('/comunications', function () {
+        return view('comunications');
+    });
+    // La ruta por encima de este comentario muestra los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
+    // La ruta por debajo de este comentario recibe la información de los formularios relacionados con las comunicaciones bien sean de informacion, incidencias, sugerencias o quejas
+    Route::post('/comunicaciones', function () {
+        return view('comunications');
+    });
+
+    Route::get('/profile', function () {
+        return view('profile');
+    });
+    // La ruta por encima de este comentario muestra el perfil del usuario
+    // La ruta por debajo de este comentario recibe la información del formulario de edición del perfil
+    Route::post('/profile', function () {
+        return view('profile');
+    });
+
+    Route::get('/calendar', function () {
+        return view('calendar');
+    });
+
+    Route::resource('/users', UserController::class)->only([
+        'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
+    ]);
+
+    Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])->name('users.destroySingle');
+
+
 });
 
-Route::resource('/users', UserController::class)->only([
-    'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
-]);
+Auth::routes();
 
-Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])->name('users.destroySingle');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
