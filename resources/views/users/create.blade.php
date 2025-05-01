@@ -41,7 +41,8 @@
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Crear</button>
+        <button type="submit" class="btn btn-primary">Crear usuario</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary">Volver</a>
     </form>
 </div>
 @endsection

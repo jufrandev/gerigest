@@ -39,7 +39,7 @@ class NoteController extends Controller
 
         $notes = $query->paginate(10);
 
-        $noteTypes = \App\Models\NoteType::all(); // Obtener los tipos de nota para el filtro
+        $noteTypes = \App\Models\NoteType::all(); // Obtener los tipos de anotaciónpara el filtro
         $authors = \App\Models\User::all(); // Obtener todos los usuarios para el filtro de autor
 
         return view('notes.index', compact('notes', 'noteTypes', 'authors'));
@@ -72,7 +72,7 @@ class NoteController extends Controller
             'priority_id' => $validated['priority_id'],
         ]);
 
-        return redirect()->route('notes.index')->with('success', 'Nota creada correctamente.');
+        return redirect()->route('notes.index')->with('success', ucfirst('anotación creada correctamente.'));
     }
 
     /**
@@ -107,7 +107,7 @@ class NoteController extends Controller
 
         $note->update($validated);
 
-        return redirect()->route('notes.show', $note)->with('success', 'Nota actualizada correctamente.');
+        return redirect()->route('notes.show', $note)->with('success', ucfirst('anotación actualizada correctamente.'));
     }
 
     /**
@@ -116,6 +116,18 @@ class NoteController extends Controller
     public function destroy(Note $note)
     {
         $note->delete();
-        return redirect()->route('notes.index')->with('success', 'Nota eliminada correctamente.');
+        return redirect()->route('notes.index')->with('success', ucfirst('anotación eliminada correctamente.'));
+    }
+
+    public function destroyMultiple(Request $request)
+    {
+        $ids = $request->input('ids', []);
+
+        if (!empty($ids)) {
+            Note::whereIn('id', $ids)->delete();
+            return redirect()->route('notes.index')->with('success', ucfirst('anotaciones eliminadas correctamente.'));
+        }
+
+        return redirect()->route('notes.index')->with('error', 'No se seleccionaron anotaciones para eliminar.');
     }
 }

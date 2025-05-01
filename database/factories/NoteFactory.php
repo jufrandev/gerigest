@@ -23,7 +23,7 @@ class NoteFactory extends Factory
             'created_by' => User::inRandomOrder()->first()->id, // Usuario aleatorio
             'title' => $this->faker->sentence(6), // Título aleatorio
             'content' => $this->faker->paragraph(3), // Contenido aleatorio
-            'note_type_id' => NoteType::inRandomOrder()->first()->id ?? null, // Tipo de nota aleatorio o null
+            'note_type_id' => NoteType::inRandomOrder()->first()->id ?? null, // Tipo de anotación aleatorio o null
             'priority_id' => Priority::inRandomOrder()->first()->id ?? null, // Prioridad aleatoria o null
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'), // Fecha aleatoria
             'updated_at' => now(),

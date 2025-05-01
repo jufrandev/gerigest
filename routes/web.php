@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth']], function (){
     Route::delete('/users/{user}/delete', [UserController::class, 'destroySingle'])
         ->name('users.destroySingle');
 
+    Route::delete('notes/destroy-multiple', [NoteController::class, 'destroyMultiple'])
+        ->name('notes.destroyMultiple');
+
     Route::resource('notes', NoteController::class)->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);

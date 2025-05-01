@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container col-12 col-md-8 col-lg-6 col-xl-4">
-    <h1>Editar Nota</h1>
+    <h1>Editar anotación</h1>
 
     <form action="{{ route('notes.update', $note) }}" method="POST">
         @csrf
@@ -23,9 +23,9 @@
             <textarea name="content" id="content" class="form-control" rows="5">{{ old('content', $note->content) }}</textarea>
         </div>
 
-        {{-- Tipo de Nota --}}
+        {{-- Tipo de anotación--}}
         <div class="mb-3">
-            <label for="note_type_id" class="form-label">Tipo de Nota</label>
+            <label for="note_type_id" class="form-label">Tipo de anotación</label>
             <select name="note_type_id" id="note_type_id" class="form-control">
                 <option value="">-- Seleccionar Tipo --</option>
                 @foreach ($noteTypes as $type)

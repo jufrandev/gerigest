@@ -50,6 +50,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Actualizar</button>
+                <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>
     </div>
