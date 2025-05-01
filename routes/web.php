@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
@@ -49,6 +50,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::resource('notes', NoteController::class)->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
     ]);
+
+    Route::delete('activity-types/destroy-multiple', [ActivityTypeController::class, 'destroyMultiple'])->name('activity-types.destroyMultiple');
+
+    Route::resource('activity-types', ActivityTypeController::class);
 });
 
     // Rutas de autenticación

@@ -50,3 +50,4 @@
 
     </div>
 </footer>
+@include('js.common_script')

@@ -68,5 +68,5 @@
         {{ $users->links() }}
     </div>
 </div>
-@include('js.common_script');
+{{-- @include('js.common_script'); --}}
 @endsection

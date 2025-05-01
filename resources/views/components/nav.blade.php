@@ -28,7 +28,7 @@
                     <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users">Usuarios</a>
+                    <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                 </li>
             </ul>
 

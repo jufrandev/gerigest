@@ -59,6 +59,8 @@ class ActivityTypeSeeder extends Seeder
         ];
         ActivityType::create($data);
 
+        ActivityType::factory(5)->create();
+
 
     }
 }
