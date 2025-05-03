@@ -16,21 +16,28 @@
             <!-- Links -->
             <ul class="navbar-nav ms-4 me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio</a>
+                  <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Actividades</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ route('activity-types.index') }}">Tipo de actividades</a></li>
+                    <li><a class="dropdown-item" href="{{ route('locations.index') }}">Ubicaciones</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                  </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/activities">Actividades</a>
+                  <a class="nav-link" href="{{ route('calendar') }}">Calendario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/calendar">Calendario</a>
+                  <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>
+                  <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-                </li>
-            </ul>
+              </ul>
 
             <!-- Íconos -->
             <div class="d-flex align-items-center mt-3 mt-lg-0">

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -22,14 +23,6 @@ Route::view('/contact', 'contact')->name('contact');
     // Rutas con el middleware 'auth'
 
 Route::group(['middleware' => ['auth']], function (){
-
-    // Route::view('/activities', 'activities')->name('activities.index');
-    // // TODO: Ruta para procesar formulario de actividades
-    // // Route::post('/actividades', [ActividadController::class, 'store']);
-
-    // Route::view('/comunications', 'comunications')->name('comunications.index');
-    // // TODO: Ruta para procesar formulario de comunicaciones
-    // // Route::post('/comunicaciones', [ComunicacionController::class, 'store']);
 
     Route::view('/profile', 'profile')->name('profile.view');
     // TODO: Ruta para actualizar perfil
@@ -54,6 +47,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::delete('activity-types/destroy-multiple', [ActivityTypeController::class, 'destroyMultiple'])->name('activity-types.destroyMultiple');
 
     Route::resource('activity-types', ActivityTypeController::class);
+
+    Route::delete('locations/destroy-multiple', [LocationController::class, 'destroyMultiple'])->name('locations.destroyMultiple');
+
+    Route::resource('locations', LocationController::class);
 });
 
     // Rutas de autenticación

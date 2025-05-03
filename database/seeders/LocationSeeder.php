@@ -17,5 +17,7 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Comedor', 'description' => 'Comedor del centro']);
         Location::create(['name' => 'Sala de Terapia', 'description' => 'Sala de terapia del centro']);
         Location::create(['name' => 'Sala de Entrenamiento', 'description' => 'Sala de entrenamiento del centro']);
+
+        Location::factory(5)->create();
     }
 }
