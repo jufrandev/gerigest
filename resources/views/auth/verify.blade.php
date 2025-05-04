@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Verificar Correo Electrónico';
+@endphp
 
 @section('content')
 <div class="container">

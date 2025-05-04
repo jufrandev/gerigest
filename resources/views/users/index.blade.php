@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Gestión de Usuarios';
+@endphp
 
 @section('content')
 <div class="container">

@@ -1,35 +1,7 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <h1>Detalles del Usuario</h1>
-    <p><strong>Nombre:</strong> {{ $user->full_name }}</p>
-    <p><strong>Email:</strong> {{ $user->email }}</p>
-    <p><strong>Dirección:</strong> {{ $user->address }}</p>
-    <p><strong>Teléfono:</strong> {{ $user->phone }}</p>
-    <p><strong>Roles:</strong> {{ $user->roles->pluck('name')->join(', ') }}</p>
-
-    @if ($user->patient)
-        <h3>Información del Paciente</h3>
-        <p><strong>Número de Habitación:</strong> {{ $user->patient->room_number }}</p>
-    @endif
-
-    @if ($user->healthcareWorker)
-        <h3>Información del Sociosanitario</h3>
-        <p><strong>Titulación:</strong> {{ $user->healthcareWorker->qualification }}</p>
-    @endif
-
-    @if ($user->familyMembers->isNotEmpty())
-        <h3>Familiares Relacionados</h3>
-        <ul>
-            @foreach ($user->familyMembers as $familyMember)
-                <li>{{ $familyMember->patient->user->full_name }}</li>
-            @endforeach
-        </ul>
-    @endif
-</div>
-@endsection --}}
 @extends('layouts.app')
+@php
+    $title = 'Detalles del suario';
+@endphp
 
 @section('content')
 <div class="container">

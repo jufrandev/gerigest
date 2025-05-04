@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Recuperar Contraseña';
+@endphp
 
 @section('content')
 <div class="container">

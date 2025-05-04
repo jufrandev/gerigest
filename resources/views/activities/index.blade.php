@@ -1,13 +1,12 @@
-
 {{-- filepath: resources/views/activity_types/index.blade.php --}}
 @extends('layouts.app')
 @php
-    $title = 'Tipos de Actividades';
+    $title = 'Actividades';
 @endphp
 
 @section('content')
 <div class="container">
-    <h1>Tipos de Actividades</h1>
+    <h1>Actividades</h1>
 
     {{-- Mensajes de éxito o error --}}
     @if (session('success'))
@@ -25,10 +24,10 @@
     @endif
 
     {{-- Botón para crear un nuevo tipo de actividad --}}
-    <a href="{{ route('activity-types.create') }}" class="btn btn-primary mb-3">Crear Tipo de Actividad</a>
+    <a href="{{ route('activities.create') }}" class="btn btn-primary mb-3">Crear Actividad</a>
 
     {{-- Tabla de tipos de actividades --}}
-    <form action="{{ route('activity-types.destroyMultiple') }}" method="POST" id="bulk-delete-form">
+    <form action="{{ route('activities.destroyMultiple') }}" method="POST" id="bulk-delete-form">
         @csrf
         @method('DELETE')
 
@@ -38,23 +37,34 @@
                     <th><input type="checkbox" id="select-all"></th>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
+                    <th style="width: 30%">Descripción</th>
+                    <th>Tipo de Actividad</th>
+                    <th>Ubicación</th>
+                    <th>Creado por</th>
                     <th class="text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($activityTypes as $activityType)
+                @foreach ($activities as $activity)
+                {{-- @dd($activity); --}}
                 <tr>
-                    <td><input type="checkbox" name="ids[]" value="{{ $activityType->id }}"></td>
-                    <td>{{ $activityType->id }}</td>
-                    <td>{{ $activityType->name }}</td>
-                    <td>{{ $activityType->description }}</td>
+                    <td><input type="checkbox" name="ids[]" value="{{ $activity->id }}"></td>
+                    <td>{{ $activity->id }}</td>
+                    <td>{{ $activity->name }}</td>
+                    <td>
+                        <div class="text-truncate" style="max-width: 200px;">
+                            {{ $activity->description }}
+                        </div>
+                    </td>
+                    <td>{{ $activity->activityType->name }}</td>
+                    <td>{{ $activity->location->name }}</td>
+                    <td>{{ $activity->creator->username ?? '' }}</td>
                     <td class="text-center">
-                        <a href="{{ route('activity-types.edit', $activityType) }}" class="btn btn-warning btn-sm">Editar</a>
-                        <form action="{{ route('activity-types.destroy', $activityType) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('activities.edit', $activity) }}" class="btn btn-warning btn-sm">Editar</a>
+                        <form action="{{ route('activities.destroy', $activity) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este tipo de actividad?')">Eliminar</button>
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta actividad?')">Eliminar</button>
                         </form>
                     </td>
                 </tr>
@@ -63,14 +73,15 @@
         </table>
 
         <button type="submit" class="btn btn-danger mt-3"
-            onclick="return confirm('¿Estás seguro de que deseas eliminar los tipos de actividad seleccionados?')">
-            Eliminar Seleccionados
+            onclick="return confirm('¿Estás seguro de que deseas eliminar las actividades seleccionadas?')">
+            Eliminar Seleccionadas
         </button>
     </form>
 
     {{-- Paginación --}}
     <div class="d-flex justify-content-center">
-        {{ $activityTypes->links() }}
+        {{ $activities->links() }}
     </div>
 </div>
 @endsection
+

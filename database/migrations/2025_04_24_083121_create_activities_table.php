@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->foreignId('location_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('activity_type_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
-            $table->string('created_by', 255)->nullable()->index();
             $table->softDeletes();
         });
     }

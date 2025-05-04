@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Editar usuario';
+@endphp
 
 @section('content')
 <div class="container">

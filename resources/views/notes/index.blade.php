@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Listado de Anotaciones';
+@endphp
 
 @section('content')
     <div class="container">

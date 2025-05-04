@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Crear Usuario';
+@endphp
 
 @section('content')
 <div class="container">

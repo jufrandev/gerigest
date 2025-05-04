@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Iniciar Sesión';
+@endphp
 
 @section('content')
 <div class="container">

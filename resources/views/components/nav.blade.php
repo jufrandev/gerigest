@@ -23,7 +23,7 @@
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('activity-types.index') }}">Tipo de actividades</a></li>
                     <li><a class="dropdown-item" href="{{ route('locations.index') }}">Ubicaciones</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="{{ route('activities.index') }}">Actividades</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#">Separated link</a></li>
                   </ul>

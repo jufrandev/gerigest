@@ -1,6 +1,9 @@
 
 {{-- filepath: resources/views/activity_types/create.blade.php --}}
 @extends('layouts.app')
+@php
+    $title = 'Crear Tipo de Actividad';
+@endphp
 
 @section('content')
 <div class="container col-12 col-md-8 col-lg-6 col-xl-4">

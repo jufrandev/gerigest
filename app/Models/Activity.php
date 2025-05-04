@@ -30,7 +30,7 @@ class Activity extends Model
      * Types of activities.
      *
      */
-    public function activityTypes()
+    public function activityType()
     {
         return $this->belongsTo(ActivityType::class, 'activity_type_id');
     }
@@ -40,7 +40,7 @@ class Activity extends Model
      *
      * @return BelongsTo
      */
-    public function createdBy(): BelongsTo
+    public function creator(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by');
     }
@@ -50,10 +50,10 @@ class Activity extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function events(): HasMany
-    {
-        return $this->hasMany(Event::class);
-    }
+    // public function events(): HasMany
+    // {
+    //     return $this->hasMany(Event::class);
+    // }
 
     /**
      * Relationship to the location associated with the activity.

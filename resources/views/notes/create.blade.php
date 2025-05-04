@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@php
+    $title = 'Crear Anotación';
+@endphp
 
 @section('content')
 <div class="container col-12 col-md-8 col-lg-6 col-xl-4">

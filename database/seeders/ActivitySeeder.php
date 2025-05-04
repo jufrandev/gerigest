@@ -82,5 +82,6 @@ class ActivitySeeder extends Seeder
         ];
         Activity::create($data);
 
+        Activity::factory(10)->create();
     }
 }

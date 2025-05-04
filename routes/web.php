@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
@@ -51,6 +52,10 @@ Route::group(['middleware' => ['auth']], function (){
     Route::delete('locations/destroy-multiple', [LocationController::class, 'destroyMultiple'])->name('locations.destroyMultiple');
 
     Route::resource('locations', LocationController::class);
+
+    Route::delete('activities/destroy-multiple', [ActivityController::class, 'destroyMultiple'])->name('activities.destroyMultiple');
+
+    Route::resource('activities', ActivityController::class);
 });
 
     // Rutas de autenticación
