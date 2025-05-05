@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Event;
+use App\Models\Activity;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,41 +11,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class EventFactory extends Factory
 {
+    // protected $model = Event::class;
 
-    protected $model = Event::class;
-
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    public function definition()
     {
-        // Generar start_time primero
-        $startTime = $this->faker->dateTimeBetween('now', '+1 week', null);
-        // Generar end_time basado en start_time
-        $endTime = (clone $startTime)->modify(rand(1, 3) . ' hours');
-        $data = [];
-        $data = [
-            // User aleatorio de la tabla users con rol de 'paciente' en tabla roles
-            'user_id' => User::whereHas('roles', function ($query) {
-                $query->where('name', 'paciente');
-            })->inRandomOrder()->first()->id,
-
-            // User aleatorio de la tabla users con rol de 'sociosanitario' o 'admin'
-            'created_by' => User::whereHas('roles', function ($query) {
-            $query->whereIn('name', ['sociosanitario', 'admin']);
-            })->inRandomOrder()->first()->id,
-
-            // activity_id aleatorio de la tabla activities
-            'activity_id' => \App\Models\Activity::inRandomOrder()->first()->id,
-
-            // start_time aleatorio entre -1 week ahora + 1 week
-            'start_time' => $startTime,
-
-            // end_time aleatorio entre start_time y +1 hour
-            'end_time' => $endTime,
+        return [
+            'user_id' => User::inRandomOrder()->first()->id, // Usuario relacionado
+            'created_by' => User::inRandomOrder()->first()->id, // Usuario que creó el evento
+            'activity_id' => Activity::inRandomOrder()->first()->id, // Actividad relacionada
+            'start_time' => $this->faker->dateTimeBetween('now', '+1 week'), // Hora de inicio
+            'end_time' => $this->faker->dateTimeBetween('+1 week', '+2 weeks'), // Hora de fin
         ];
-        return $data;
     }
 }

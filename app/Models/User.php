@@ -94,4 +94,24 @@ class User extends Authenticatable
     {
         return $this->hasMany(FamilyMember::class, 'user_id');
     }
+
+    /**
+     * Verifica si el usuario es administrador.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin'; // Ajusta según cómo manejes los roles
+    }
+
+    /**
+     * Verifica si el usuario es sociosanitario.
+     *
+     * @return bool
+     */
+    public function isSociosanitario(): bool
+    {
+        return $this->role === 'sociosanitario'; // Ajusta según cómo manejes los roles
+    }
 }

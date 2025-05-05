@@ -19,17 +19,14 @@
                   <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Actividades</a>
+                  <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Actividades y Eventos</a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="{{ route('activity-types.index') }}">Tipo de actividades</a></li>
                     <li><a class="dropdown-item" href="{{ route('locations.index') }}">Ubicaciones</a></li>
                     <li><a class="dropdown-item" href="{{ route('activities.index') }}">Actividades</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    <li><a class="dropdown-item" href="{{ route('events.index') }}">Eventos</a></li>
                   </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('calendar') }}">Calendario</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>

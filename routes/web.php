@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ActivityTypeController;
+use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\NoteController;
@@ -26,10 +28,6 @@ Route::view('/contact', 'contact')->name('contact');
 Route::group(['middleware' => ['auth']], function (){
 
     Route::view('/profile', 'profile')->name('profile.view');
-    // TODO: Ruta para actualizar perfil
-    // Route::post('/profile', [ProfileController::class, 'update']);
-
-    Route::view('/calendar', 'calendar')->name('calendar');
 
     Route::resource('users', UserController::class)->only([
         'index', 'create', 'store', 'show', 'edit', 'update', 'destroy'
@@ -56,6 +54,11 @@ Route::group(['middleware' => ['auth']], function (){
     Route::delete('activities/destroy-multiple', [ActivityController::class, 'destroyMultiple'])->name('activities.destroyMultiple');
 
     Route::resource('activities', ActivityController::class);
+
+    Route::delete('events/destroy-multiple', [EventController::class, 'destroyMultiple'])->name('events.destroyMultiple');
+
+    Route::resource('events', EventController::class);
+
 });
 
     // Rutas de autenticación

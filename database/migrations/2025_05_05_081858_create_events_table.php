@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('created_by')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('activity_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Usuario relacionado
+            $table->foreignId('created_by')->constrained('users')->onDelete('cascade'); // Usuario que creó el evento
+            $table->foreignId('activity_id')->constrained()->onDelete('cascade'); // Actividad relacionada
+            $table->timestamp('start_time'); // Hora de inicio
+            $table->timestamp('end_time')->nullable(); // Hora de fin
             $table->timestamps();
         });
     }
