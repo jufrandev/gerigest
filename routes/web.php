@@ -57,6 +57,10 @@ Route::group(['middleware' => ['auth']], function (){
 
     Route::delete('events/destroy-multiple', [EventController::class, 'destroyMultiple'])->name('events.destroyMultiple');
 
+    Route::get('events/calendar', [EventController::class, 'calendar'])->name('events.calendar');
+
+    Route::get('events/calendar-data', [EventController::class, 'calendarData'])->name('events.calendarData');
+
     Route::resource('events', EventController::class);
 
 });

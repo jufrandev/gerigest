@@ -19,13 +19,13 @@ class EventSeeder extends Seeder
         $user = User::where('email', 'usuario@example.com')->first();
 
         // Crear eventos para el usuario admin@example.com
-        Event::factory(10)->create([
+        Event::factory(20)->create([
             'user_id' => $admin->id,
             'created_by' => $admin->id,
         ]);
 
         // Crear eventos para el usuario usuario@example.com
-        Event::factory(10)->create([
+        Event::factory(20)->create([
             'user_id' => $user->id,
             'created_by' => $admin->id, // Supongamos que los creó el admin
         ]);

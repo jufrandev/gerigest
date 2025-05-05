@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Event;
@@ -89,5 +90,40 @@ class EventController extends Controller
         }
 
         return redirect()->route('events.index')->with('error', 'No se seleccionaron eventos para eliminar.');
+    }
+
+    public function calendar(Request $request)
+    {
+        // Obtener el usuario seleccionado de la sesión o usar el usuario logueado por defecto
+        $selectedUserId = session('selected_user_id', auth()->id());
+
+        // Guardar el usuario seleccionado en la sesión si se envía en la solicitud
+        if ($request->has('user_id')) {
+            $selectedUserId = $request->input('user_id');
+            session(['selected_user_id' => $selectedUserId]);
+        }
+
+        // Obtener usuarios con eventos creados
+        $users = User::whereHas('events')->get();
+
+        return view('events.calendar', compact('users', 'selectedUserId'));
+    }
+
+    public function calendarData(Request $request)
+    {
+        $userId = $request->query('user_id', auth()->id()); // Obtener el ID del usuario seleccionado o el logueado
+        $events = Event::where('user_id', $userId)->with('activity', 'activity.location', 'activity.activityType')->get();
+
+        return response()->json($events->map(function ($event) {
+            return [
+                'id' => $event->id,
+                'title' => $event->activity->name, // Nombre de la actividad
+                'start' => $event->start_time,
+                'end' => $event->end_time,
+                'description' => $event->activity->description, // Descripción de la actividad
+                'location' => $event->activity->location->name ?? 'Sin ubicación', // Nombre de la ubicación
+                'activity_type' => $event->activity->activityType->name ?? 'Sin tipo', // Tipo de actividad
+            ];
+        }));
     }
 }

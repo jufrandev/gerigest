@@ -15,12 +15,14 @@ class EventFactory extends Factory
 
     public function definition()
     {
+        $startTime = $this->faker->dateTimeBetween('now', '+1 week');
+        $endTime = (clone $startTime)->modify('+' . rand(1, 2) . ' hours');
         return [
             'user_id' => User::inRandomOrder()->first()->id, // Usuario relacionado
             'created_by' => User::inRandomOrder()->first()->id, // Usuario que creó el evento
             'activity_id' => Activity::inRandomOrder()->first()->id, // Actividad relacionada
-            'start_time' => $this->faker->dateTimeBetween('now', '+1 week'), // Hora de inicio
-            'end_time' => $this->faker->dateTimeBetween('+1 week', '+2 weeks'), // Hora de fin
+            'start_time' => $startTime,
+            'end_time' => $endTime,
         ];
     }
 }

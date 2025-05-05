@@ -36,4 +36,5 @@ class Event extends Model
     {
         return $this->activity->name ?? 'Sin actividad asociasda';
     }
+    
 }

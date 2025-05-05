@@ -29,6 +29,9 @@
                   </ul>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ route('events.calendar') }}">Calendario</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ route('notes.index') }}">Anotaciones</a>
                 </li>
                 <li class="nav-item">

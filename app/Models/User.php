@@ -114,4 +114,9 @@ class User extends Authenticatable
     {
         return $this->role === 'sociosanitario'; // Ajusta según cómo manejes los roles
     }
+    
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'user_id');
+    }
 }
