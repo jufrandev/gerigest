@@ -17,7 +17,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Desayuno',
             'description' => 'Desayuno en salón',
             'location_id' => 2,
-            'activity_type_id' => 3,
+            'activity_type_id' => 1,
             'created_by' => 1,
         ];
         Activity::create($data);
@@ -27,7 +27,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Almuerzo',
             'description' => 'Almuerzo en salón',
             'location_id' => 2,
-            'activity_type_id' => 3,
+            'activity_type_id' => 1,
             'created_by' => 1,
         ];
         Activity::create($data);
@@ -37,7 +37,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Merienda',
             'description' => 'Merienda en salón',
             'location_id' => 2,
-            'activity_type_id' => 3,
+            'activity_type_id' => 1,
             'created_by' => 1,
         ];
         Activity::create($data);
@@ -47,7 +47,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Cena',
             'description' => 'Cena en salón',
             'location_id' => 2,
-            'activity_type_id' => 3,
+            'activity_type_id' => 1,
             'created_by' => 1,
         ];
         Activity::create($data);
@@ -57,7 +57,7 @@ class ActivitySeeder extends Seeder
             'name' => 'Higiene Personal',
             'description' => 'Higiene personal en habitación',
             'location_id' => 1,
-            'activity_type_id' => 3,
+            'activity_type_id' => 2,
             'created_by' => 1,
         ];
         Activity::create($data);
@@ -82,6 +82,6 @@ class ActivitySeeder extends Seeder
         ];
         Activity::create($data);
 
-        Activity::factory(10)->create();
+        // Activity::factory(10)->create();
     }
 }
