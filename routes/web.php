@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
     // Rutas públicas
 
 Route::view('/', 'home')->name('home.landing');
+Route::view('/home', 'home')->name('home');
 Route::view('/login', 'login')->name('login.form');
 Route::view('/login-fail', 'login-fail')->name('login.fail');
 Route::view('/quienes-somos', 'quienes-somos')->name('about');
@@ -68,7 +69,5 @@ Route::group(['middleware' => ['auth']], function (){
     // Rutas de autenticación
 
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
