@@ -24,12 +24,36 @@ Un mismo elemento de tarea puede ser compartido por varias tareas (por ejemplo, 
 
 Los elementos de tarea tienen un tipo, que define su categoría dentro del sistema.
 
-Incidentes y anotaciones
+Incidentes y Notas
 Durante la ejecución de actividades pueden surgir incidentes, que deben ser registrados para su seguimiento.
 
 Los incidentes pueden estar relacionados tanto con la ejecución de tareas como con eventos que afecten a los pacientes, tales como caídas, emergencias médicas o alteraciones del
 comportamiento.
 
-Se pueden agregar anotaciones a las tareas y actividades, permitiendo documentar observaciones, reportes médicos o comentarios relevantes sobre los pacientes.
+Se pueden agregar notas a las tareas y actividades, permitiendo documentar observaciones, reportes médicos o comentarios relevantes sobre los pacientes.
 
 
+Para configurar su DKIM, debe añadir estos dos registros a sus DNS
+
+Campo de texto
+CNAME 1: ovhmo4763474-selector2._domainkey.probandoando.com CNAME ovhmo4763474-selector2._domainkey.2856050.qr.dkim.mail.ovh.net.
+CNAME 2: ovhmo4763474-selector1._domainkey.probandoando.com CNAME ovhmo4763474-selector1._domainkey.2856051.qr.dkim.mail.ovh.net.
+Consulte la documentación de su proveedor de dominio. Para más información, consulte nuestra guía.
+
+Una vez realizado el cambio, espere unos minutos y haga clic en «Activar».
+
+#######################################################
+
+chatgpt
+kling.ia
+Midjourney
+
+
+#######################################################
+
+
+mailtrap
+
+bizagi
+
+balsamiq
