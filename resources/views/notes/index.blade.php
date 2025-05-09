@@ -62,7 +62,7 @@
                         <option value="">-- Autor --</option>
                         @foreach ($authors as $author)
                             <option value="{{ $author->id }}" {{ request('author') == $author->id ? 'selected' : '' }}>
-                                {{ $author->full_name }}
+                                {{ $author->full_name_with_username }}
                             </option>
                         @endforeach
                     </select>
@@ -100,7 +100,7 @@
                             <td>{{ $note->id }}</td>
                             <td>{{ $note->title }}</td>
                             <td>{{ $note->createdBy->full_name }}</td>
-                            <td>{{ $note->created_at }}</td>
+                            <td>{{ $note->created_at->format('d/m/Y H:i:s') }}</td>
                             <td>{{ $note->noteType->name ?? 'Sin Tipo' }}</td>
                             <td class="text-center">
                                 <a href="{{ route('notes.show', $note) }}" class="btn btn-info btn-sm">Ver</a>

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Note;
 
 class User extends Authenticatable
 {
@@ -57,6 +58,11 @@ class User extends Authenticatable
     protected function getFullNameAttribute(): string
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    protected function getFullNameWithUsernameAttribute(): string
+    {
+        return $this->first_name . ' ' . $this->last_name . ' (' . $this->username . ')';
     }
 
     public static function boot()
@@ -114,9 +120,17 @@ class User extends Authenticatable
     {
         return $this->role === 'sociosanitario'; // Ajusta según cómo manejes los roles
     }
-    
+
     public function events()
     {
         return $this->hasMany(Event::class, 'user_id');
+    }
+
+    /**
+     * Relación con las notas creadas por el usuario.
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'created_by');
     }
 }

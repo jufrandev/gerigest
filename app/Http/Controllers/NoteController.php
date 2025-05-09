@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\NoteType;
 use App\Models\Priority;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class NoteController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Note::with('createdBy', 'noteType'); // Cargar relaciones necesarias
+        $query = Note::with('createdBy', 'noteType');
 
         // Filtros
         if ($request->filled('author')) {
@@ -34,13 +35,10 @@ class NoteController extends Controller
             $query->where('note_type_id', $request->note_type_id);
         }
 
-        // Ordenar
         $query->orderBy($request->get('sort_by', 'created_at'), $request->get('order', 'desc'));
-
         $notes = $query->paginate(10);
-
-        $noteTypes = \App\Models\NoteType::all(); // Obtener los tipos de anotaciónpara el filtro
-        $authors = \App\Models\User::all(); // Obtener todos los usuarios para el filtro de autor
+        $noteTypes = NoteType::all();
+        $authors = User::whereHas('notes')->get();
 
         return view('notes.index', compact('notes', 'noteTypes', 'authors'));
     }
