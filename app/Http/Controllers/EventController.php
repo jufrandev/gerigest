@@ -19,7 +19,7 @@ class EventController extends Controller
         }
 
         $events = $query->paginate(10);
-        $users = User::all(); // Obtener todos los usuarios para el filtro
+        $users = User::whereHas('events')->get();
 
         return view('events.index', compact('events', 'users'));
     }

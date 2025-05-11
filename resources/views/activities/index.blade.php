@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/activity_types/index.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Actividades';
@@ -46,7 +45,6 @@
             </thead>
             <tbody>
                 @foreach ($activities as $activity)
-                {{-- @dd($activity); --}}
                 <tr>
                     <td><input type="checkbox" name="ids[]" value="{{ $activity->id }}"></td>
                     <td>{{ $activity->id }}</td>

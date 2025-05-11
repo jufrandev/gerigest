@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/activities/edit.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Editar Actividad';

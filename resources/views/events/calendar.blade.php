@@ -46,6 +46,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a id="edit-event-button" href="#" class="btn btn-primary">Editar Evento</a>
             </div>
         </div>
     </div>
@@ -91,6 +92,10 @@
             document.getElementById('modal-activity-type').textContent = event.activity_type || 'Sin tipo';
             document.getElementById('modal-start-time').textContent = info.event.start.toLocaleString();
             document.getElementById('modal-end-time').textContent = info.event.end ? info.event.end.toLocaleString() : 'Sin hora de finalización';
+
+            // Configurar el enlace del botón "Editar Evento"
+            const editButton = document.getElementById('edit-event-button');
+            editButton.href = `/events/${info.event.id}/edit?redirect=calendar`; // Ruta de edición del evento
 
             // Mostrar el modal
             const eventModal = new bootstrap.Modal(document.getElementById('eventModal'));

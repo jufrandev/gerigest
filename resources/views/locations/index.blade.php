@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/locations/index.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Ubicaciones';

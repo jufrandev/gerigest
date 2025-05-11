@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/events/create.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Crear Evento';

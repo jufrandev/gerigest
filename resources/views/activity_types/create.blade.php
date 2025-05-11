@@ -1,5 +1,4 @@
 
-{{-- filepath: resources/views/activity_types/create.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Crear Tipo de Actividad';

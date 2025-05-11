@@ -36,5 +36,10 @@ class Event extends Model
     {
         return $this->activity->name ?? 'Sin actividad asociasda';
     }
-    
+
+    protected $casts = [
+        'start_time' => 'datetime',
+        'end_time' => 'datetime',
+    ];
+
 }

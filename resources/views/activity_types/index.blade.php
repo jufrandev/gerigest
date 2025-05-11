@@ -1,5 +1,4 @@
 
-{{-- filepath: resources/views/activity_types/index.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Tipos de Actividades';

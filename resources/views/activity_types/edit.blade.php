@@ -1,5 +1,4 @@
 
-{{-- filepath: resources/views/activity_types/edit.blade.php --}}
 @extends('layouts.app')
 @php
     $title = 'Editar Tipo de Actividad';
