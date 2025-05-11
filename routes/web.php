@@ -10,6 +10,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 
     // Rutas públicas
 
@@ -22,6 +23,7 @@ Route::view('/donde-estamos', 'donde-estamos')->name('location');
 Route::view('/mission', 'mission')->name('mission');
 Route::view('/privacy', 'privacy')->name('privacy');
 Route::view('/contact', 'contact')->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 
     // Rutas con el middleware 'auth'
