@@ -55,12 +55,13 @@ class UserFactory extends Factory
     public function configure(): static
     {
         return $this->afterCreating(function (User $user) {
-            // Obtener roles disponibles
+            
             $roles = Role::pluck('name')->toArray();
+            $ids = [1, 2, 3, 4];
 
-            // Asignar un rol aleatorio al usuario
-            if (!empty($roles)) {
-                $user->assignRole(fake()->randomElement($roles));
+            if (!empty($roles) && !in_array($user->id, $ids)) {
+                $role = fake()->randomElement($roles);
+                $user->assignRole($role);
             }
         });
     }
